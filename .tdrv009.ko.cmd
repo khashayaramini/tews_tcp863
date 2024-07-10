@@ -1,0 +1,1 @@
+cmd_/home/lemona16/tdrv009/tdrv009.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/lemona16/tdrv009/tdrv009.ko /home/lemona16/tdrv009/tdrv009.o /home/lemona16/tdrv009/tdrv009.mod.o;  true

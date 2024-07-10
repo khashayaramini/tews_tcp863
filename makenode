@@ -1,0 +1,30 @@
+#!/bin/sh
+module="tdrv009drv"
+devicename="tdrv009_"
+MODE="666"
+
+# remove old device nodes (only minor devices 0..7)
+rm -f /dev/${devicename}[0-7]
+
+# extract current major device numbers
+major=`cat /proc/devices | awk "\\$2==\"$module\" {print \\$1}"`
+
+# create special device nodes for TDRV006 devices 0..7
+mknod /dev/${devicename}0 c $major 0
+chmod ${MODE} /dev/${devicename}0
+mknod /dev/${devicename}1 c $major 1
+chmod ${MODE} /dev/${devicename}1
+mknod /dev/${devicename}2 c $major 2
+chmod ${MODE} /dev/${devicename}2
+mknod /dev/${devicename}3 c $major 3
+chmod ${MODE} /dev/${devicename}3
+mknod /dev/${devicename}4 c $major 4
+chmod ${MODE} /dev/${devicename}4
+mknod /dev/${devicename}5 c $major 5
+chmod ${MODE} /dev/${devicename}5
+mknod /dev/${devicename}6 c $major 6
+chmod ${MODE} /dev/${devicename}6
+mknod /dev/${devicename}7 c $major 7
+chmod ${MODE} /dev/${devicename}7
+
+ls -la /dev/${devicename}*
